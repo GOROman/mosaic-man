@@ -1,0 +1,33 @@
+/* ボカシ効果のスタイル */
+.mosaic-man-blur {
+  filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 2px 4px;
+  display: inline-block;
+  transition: filter 0.3s ease;
+  cursor: help;
+  user-select: none;
+}
+
+/* ホバー時の効果（オプション：ホバーで一時的に見えるようにする） */
+.mosaic-man-blur:hover {
+  filter: blur(0px);
+  background-color: rgba(76, 175, 80, 0.2);
+}
+
+/* アニメーション効果 */
+@keyframes blur-in {
+  from {
+    filter: blur(0px);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.mosaic-man-blur {
+  animation: blur-in 0.3s ease;
+}

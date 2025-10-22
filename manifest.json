@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Personal Information Mosaic Man",
+  "name__ja": "個人情報モザイクマン",
+  "version": "1.0.0",
+  "description": "Automatically detect and blur personal information on web pages",
+  "description__ja": "Webページ上の個人情報を自動検出してぼかします",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ]
+}

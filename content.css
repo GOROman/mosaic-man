@@ -1,0 +1,49 @@
+/* Styles for Personal Information Mosaic Man */
+
+.mosaic-blur {
+  position: relative;
+  display: inline-block;
+  color: transparent !important;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 149, 0, 0.3);
+  border-radius: 3px;
+  padding: 2px 4px;
+  cursor: help;
+  user-select: none;
+  filter: blur(4px);
+  transition: filter 0.3s ease;
+}
+
+.mosaic-blur:hover {
+  filter: blur(2px);
+  background-color: rgba(255, 149, 0, 0.4);
+}
+
+.mosaic-blur::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+  pointer-events: none;
+}
+
+.mosaic-wrapper {
+  display: inline;
+}

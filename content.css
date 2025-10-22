@@ -1,0 +1,10 @@
+/* ボカシ効果のスタイル */
+.mosaic-man-blur {
+  filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 2px 4px;
+  display: inline-block;
+  user-select: none;
+  cursor: default;
+}

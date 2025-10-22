@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Personal Information Mosaic Man",
+  "version": "1.0.0",
+  "description": "設定した個人情報（名前、郵便番号、メールアドレスなど）にボカシをかけるChrome拡張",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_start"
+    }
+  ]
+}

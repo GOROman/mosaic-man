@@ -191,9 +191,37 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+// bodyが利用可能になるまで待つ
+function waitForBody() {
+  return new Promise((resolve) => {
+    if (document.body) {
+      resolve();
+    } else {
+      const observer = new MutationObserver(() => {
+        if (document.body) {
+          observer.disconnect();
+          resolve();
+        }
+      });
+      observer.observe(document.documentElement, {
+        childList: true
+      });
+    }
+  });
+}
+
 // 初期化
 async function init() {
-  await loadSettings();
+  // 設定を読み込む（非同期）
+  const settingsPromise = loadSettings();
+
+  // bodyが利用可能になるまで待つ
+  await waitForBody();
+
+  // 設定の読み込みが完了するまで待つ
+  await settingsPromise;
+
+  // すぐにスキャンを実行
   scanPage();
 
   // DOM監視を開始
@@ -203,9 +231,5 @@ async function init() {
   });
 }
 
-// ページ読み込み時に実行
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+// できるだけ早く実行
+init();
